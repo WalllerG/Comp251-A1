@@ -53,12 +53,16 @@ public class Chaining {
     /**Inserts key k into hash table. Returns the number of collisions encountered*/
     public int insertKey(int key){
         //TODO: implement this and change the return statement
+
         return -1;
 
     }
 
     
-    
+    private static void insertHelper(int key) {
+
+    }
+
     /**Sequentially inserts a list of keys into the HashTable. Outputs total number of collisions */
     public int insertKeyArray (int[] keyArray){
         int collision = 0;
