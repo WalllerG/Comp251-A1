@@ -44,7 +44,7 @@ public class Open_Addressing {
         /**Implements the hash function g(k)*/
         public int probe(int key, int i) {
             //TODO: implement this function and change the return statement.
-        return ((((A * key) % power2(w)) >>> (m-r)) + i) % power2(w);
+        return ((((A * key) % power2(w)) >>> (w-r)) + i) % power2(r);
      }
      
      

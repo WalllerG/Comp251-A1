@@ -46,7 +46,7 @@ public class Chaining {
     /**Implements the hash function h(k)*/
     public int chain (int key) {
         // TODO: implement this and change the return statement
-        return ((A * key) % power2(w)) >>> (m-r);
+        return ((A * key) % power2(w)) >>> (w-r);
     }
         
     
