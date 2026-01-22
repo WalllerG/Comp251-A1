@@ -44,24 +44,23 @@ public class Chaining {
 
 
     /**Implements the hash function h(k)*/
-    public int chain (int key) {
+    public int chain(int key) {
         // TODO: implement this and change the return statement
         return ((A * key) % power2(w)) >>> (w-r);
     }
         
     
     /**Inserts key k into hash table. Returns the number of collisions encountered*/
-    public int insertKey(int key){
+    public int insertKey(int key) {
         //TODO: implement this and change the return statement
-
-        return -1;
-
-    }
-
-    
-    private static void insertHelper(int key) {
+        int hashValue = chain(key);
+        ArrayList<Integer> code = Table.get(hashValue);
+        code.add(hashValue);
+        Table.add(code);
+        return code.size() - 1;
 
     }
+
 
     /**Sequentially inserts a list of keys into the HashTable. Outputs total number of collisions */
     public int insertKeyArray (int[] keyArray){

@@ -24,16 +24,16 @@ public class Open_Addressing {
          for (int i =0; i<m; i++) {
              Table[i] = -1;
          }
-         
+
      }
-     
+
                  /** Calculate 2^w*/
      public static int power2(int w) {
          return (int) Math.pow(2, w);
      }
 
-     public static int generateRandom(int min, int max, int seed) {     
-         Random generator = new Random(); 
+     public static int generateRandom(int min, int max, int seed) {
+         Random generator = new Random();
                  if(seed>=0){
                     generator.setSeed(seed);
                  }
@@ -46,14 +46,24 @@ public class Open_Addressing {
             //TODO: implement this function and change the return statement.
         return ((((A * key) % power2(w)) >>> (w-r)) + i) % power2(r);
      }
-     
-     
+
+
      /**Inserts key k into hash table. Returns the number of collisions encountered*/
         public int insertKey(int key){
             //TODO : implement this and change the return statement.
-            return -1;  
+            int i = 0;
+            int hashValue = probe(key,0);
+            while(i < Table.length) {
+                if (Table[hashValue] == -1 || Table[hashValue] == -2) {
+                    Table[hashValue] = key;
+                    return i;
+                }
+                i++;
+                hashValue = probe(key,i);
+            }
+            return Table.length;
         }
-        
+
         /**Sequentially inserts a list of keys into the HashTable. Outputs total number of collisions */
         public int insertKeyArray (int[] keyArray){
             int collision = 0;
@@ -62,11 +72,23 @@ public class Open_Addressing {
             }
             return collision;
         }
-            
+
          /**Removes key k from the hash table. Returns the number of collisions encountered*/
         public int removeKey(int key){
             //TODO: implement this and change the return statement
-                
-            return -1;
+            int i = 0;
+            int hashValue = probe(key,0);
+            while (i < Table.length) {
+                if (Table[hashValue] == key) {
+                    Table[hashValue] = -2;
+                    return i;
+                }
+                if (Table[hashValue] == -1) {
+                    return i+1;
+                }
+                i++;
+                hashValue = probe(key, i);
+            }
+            return Table.length;
         }
 }
