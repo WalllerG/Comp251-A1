@@ -76,16 +76,16 @@ public class DisjointSetsA {
         int a = rank[find(i)];
         int b = rank[find(j)];
         if (a < b) {
-            par[i] =  j;
+            par[find(i)] =  find(j);
             return j;
         }
         else if  (a > b) {
-            par[j] =  i;
+            par[find(j)] =  find(i);
             return i;
         }
         else {
-            par[find(i)] =  j;
-            rank[j]++;
+            par[find(i)] =  find(j);
+            rank[find(j)]++;
             return j;
         }
     }
@@ -95,25 +95,16 @@ public class DisjointSetsA {
 
         DisjointSetsA myset = new DisjointSetsA(6);
         System.out.println(myset);
-        System.out.println("-> Union 2 and 3");
-        myset.union(2,3);
-        System.out.println(myset);
-        System.out.println("-> Union 2 and 3");
-        myset.union(2,3);
-        System.out.println(myset);
-        System.out.println("-> Union 2 and 1");
         myset.union(2,1);
         System.out.println(myset);
-        System.out.println("-> Union 4 and 5");
-        myset.union(4,5);
-        System.out.println(myset);
-        System.out.println("-> Union 3 and 1");
         myset.union(3,1);
         System.out.println(myset);
-        System.out.println("-> Union 2 and 4");
-        myset.union(2,4);
+        myset.union(5,4);
         System.out.println(myset);
-
+        myset.union(4,1);
+        System.out.println(myset);
+        System.out.println(Arrays.toString(myset.par));
+        System.out.println(Arrays.toString(myset.rank));
     }
 
 }
